@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+        <title>Eugene's Scratchboard page: Login</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Welcome to my Scratchpad!: Login Page (design concept 2)</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+                <form action="." method="POST">
+                  <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input class="form-control" id="username" name="username" placeholder="Enter your username">
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                  </div>
+                  <button type="submit" class="btn btn-success">Log in</button>
+                </form>
+                {% if error %}
+                    <div class="alert alert-warning" role="alert">
+                        Incorrect username or password
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </body>
+</html>

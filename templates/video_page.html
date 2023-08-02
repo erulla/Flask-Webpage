@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Surprise</title>
+    <style>
+        body {
+            background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,154,0,1) 25%, rgba(208,222,33,1) 50%, rgba(79,220,74,1) 75%, rgba(63,218,216,1) 100%);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            animation: fadeIn 2s ease-out;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        .nav-button {
+            background-color: #ff0000;
+            color: #fff;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+        @keyframes fadeIn {
+            0% { background: black; }
+            100% { background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,154,0,1) 25%, rgba(208,222,33,1) 50%, rgba(79,220,74,1) 75%, rgba(63,218,216,1) 100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="nav-button">Go Back to Homepage</a>
+        <h1>You've been Rick Rolled!</h1>
+        <iframe width="1344" height="756" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</body>
+</html>
