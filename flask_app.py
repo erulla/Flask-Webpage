@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 from werkzeug.security import check_password_hash
 from datetime import datetime
 from pytz import timezone
+import json
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -61,16 +62,20 @@ class Comment(db.Model):
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    # Fetch a random Chuck Norris joke
+    response = requests.get("https://api.chucknorris.io/jokes/random")
+    joke = json.loads(response.text).get("value", "No joke found")
+
     if request.method == "GET":
-        response = requests.get('https://api.nasa.gov/planetary/apod?api_key=HEd0xctYVZbhrBG8aYl0j2G2VMwQKrrunonFib95')
-        apod = response.json()
-        return render_template("main_page.html", comments=Comment.query.all(), apod=apod)
+        return render_template("main_page.html", comments=Comment.query.all(), joke=joke)
+
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
 
     comment = Comment(content=request.form["contents"], commenter=current_user)
     db.session.add(comment)
     db.session.commit()
     return redirect(url_for('index'))
-
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
