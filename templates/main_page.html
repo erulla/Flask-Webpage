@@ -135,8 +135,12 @@
             input[type="submit"]:hover {
                 background-color: var(--secondary-color);
             }
-
-
+            .scaled-image {
+                width: 100%;
+                height: auto;
+                max-width: 100%; /* This ensures the image doesn't stretch beyond its original size */
+                display: block; /* Removes any default spacing around the image */
+            }
         </style>
 
     </head>
@@ -203,12 +207,13 @@
                     {% endif %}
                 </div>
 
-                <!-- Chuck Norris Joke Section -->
+                <!-- Dog API Section -->
                 <div class="col-md-6">
-                    <h1>Chuck Norris Joke (API)</h1>
+                    <h1>Dogs (API)</h1>
                     <div class="row" style="margin-bottom: 1ex">
                         <div>
-                            {{ joke }}
+                            <img class="scaled-image" src="{{ dog_image }}" alt="Random Dog of {{ breed }} breed">
+                            <h2>Breed: {{ breed }}</h2>
                         </div>
                     </div>
                 </div>
