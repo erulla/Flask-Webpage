@@ -62,12 +62,14 @@ class Comment(db.Model):
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # Fetch a random Chuck Norris joke
-    response = requests.get("https://api.chucknorris.io/jokes/random")
-    joke = json.loads(response.text).get("value", "No joke found")
+    # Fetch a random dog picture and its breed
+    response = requests.get("https://dog.ceo/api/breeds/image/random")
+    data = json.loads(response.text)
+    dog_image_url = data.get("message", "No image found")
+    breed = dog_image_url.split("/")[4]  # Extracting breed from the image URL
 
     if request.method == "GET":
-        return render_template("main_page.html", comments=Comment.query.all(), joke=joke)
+        return render_template("main_page.html", comments=Comment.query.all(), dog_image=dog_image_url, breed=breed)
 
     if not current_user.is_authenticated:
         return redirect(url_for('index'))
